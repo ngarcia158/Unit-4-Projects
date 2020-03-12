@@ -32,21 +32,28 @@
       Returns the previous expression from the list of expressions in the textStr parameter
 
 */
-
+//loads the init() function when browser loaded in
 window.onload = init();
 
 function init(){
+   //variable calcButtons = the items in the html with the class calsButtons
    var calcButtons = document.getElementsByClassName("calcButton");
+   //for loop that goes through all of calcButtons and listens if the button is clicked then the function button click runs
    for(var i = 0; i<calcButtons.length; i++){
       calcButtons[i].addEventListener("click", buttonClick);
    }
+   //the item witht the ID calcWindow has a event listner waiting for a keydown and calcKeys function starts
    document.getElementById("calcWindow").addEventListener("keydown", calcKeys);
 }
 
 function buttonClick(e){
+   //makes variables calcvalue and calcDecimal the values in the box of the id of Calcwindow and decimals
    var calcValue = document.getElementById("calcWindow").value;
    var calcDecimal = document.getElementById("decimals").value;
+
+   //makes the buttonvalue equal to the event of the button being pushed the value of it
    var buttonValue = e.target.value;
+   //switch case for if special buttons get clicked from the keyboard it does certain things
    switch(buttonValue){
       case ("del"):
          calcValue = "";
@@ -64,16 +71,23 @@ function buttonClick(e){
          calcValue += buttonValue;
          break;
    }
+   //makes calcValue equal to the box with id Calcwindow the value and it focus in that
    document.getElementById("calcWindow").value = calcValue;
    document.getElementById("calcWindow").focus();
 }
 
 function calcKeys(e){
+      //makes variables calcvalue and calcDecimal the values in the box of the id of Calcwindow and decimals
    var calcValue = document.getElementById("calcWindow").value;
    var calcDecimal = document.getElementById("decimals").value;
+
+      //makes the buttonvalue equal to the event of the button being pushed the value of it
    var buttonValue = e.target.value;
 
+      //switch case for if special buttons get clicked from the calc it does certain things
+
    switch(buttonValue){
+      //delets the string
       case ("Delete"):
          calcValue = "";
          break;
@@ -87,6 +101,7 @@ function calcKeys(e){
          e.preventDefault();
          break;
    }
+      //makes calcValue equal to the box with id Calcwindow the value
    document.getElementById("calcWindow").value = calcValue;
 
 }
